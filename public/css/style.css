@@ -1,0 +1,28 @@
+.body {
+    background-color: #bce7ff;
+    text-align: center;
+    margin: 50px;
+}
+
+#myCanvas {
+    color: black;
+    background-color: white;
+    cursor: crosshair;
+}
+
+#myButton {
+    background-color: #759def;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "JetBrains Mono", sans-serif;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#myButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
