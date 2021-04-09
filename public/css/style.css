@@ -33,14 +33,6 @@ a {
     text-decoration: none;
 }
 
-.btn {
-    cursor: pointer;
-    padding: 5px 15px;
-    background: var(--light-color);
-    color: var(--dark-color-a);
-    border: 0;
-    font-size: 17px;
-}
 
 /* Join Page */
 .join-container {
@@ -94,20 +86,11 @@ a {
     width: 100%;
 }
 
-@media (max-width: 700px) {
-    .chat-main {
-        display: block;
-    }
-
-    /*.chat-sidebar {*/
-    /*    display: none;*/
-    /*}*/
-}
-
 /* side */
 .chat-sidebar {
     background: var(--dark-color-b);
     color: #fff;
+    height: 100%;
     padding: 20px 20px 60px;
     overflow: auto;
     box-shadow: 5px 10px 30px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
@@ -156,10 +139,12 @@ a {
     margin-bottom: 7px;
 }
 
+/*Chat Input box*/
 .chat-form-container {
-    padding: 20px 30px;
+    padding: 20px;
     background-color: var(--dark-color-a);
-    border-radius: 5px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .chat-form-container form {
@@ -177,10 +162,6 @@ a {
 #brushButton {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-}
-
-.btn {
-    border-radius: 5px;
 }
 
 /*toolbox*/
@@ -218,11 +199,27 @@ a {
     box-shadow: 5px 10px 30px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     width: 100%;
+    image-rendering: pixelated;
     height: 100%;
 }
 
-.canvas {
+.drawCanvas {
     flex-grow: 1;
+}
+
+#msg {
+    border-radius: 0;
+    border: 0
+}
+
+.btn {
+    cursor: pointer;
+    padding: 5px 15px;
+    margin: 0;
+    background: var(--light-color);
+    color: var(--dark-color-a);
+    border: 0;
+    font-size: 17px;
 }
 
 /*parent div*/
@@ -230,5 +227,10 @@ a {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    height: 80vh;
+    height: 90vh;
+}
+
+.btn:hover {
+    background-color: #4e62fc;
+    color: var(--light-color);
 }
