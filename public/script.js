@@ -3,7 +3,7 @@ const canvas = document.querySelector('#myCanvas');
 const context = canvas.getContext('2d');
 const contextButton = canvas.getContext(`2d`);
 
-const clearButton = document.querySelector("#myButton");
+const clearButton = document.querySelector("#clearButton");
 
 let paint = false;
 
