@@ -1,9 +1,45 @@
 const socket = s;
 const canvas = document.querySelector('#myCanvas');
 const context = canvas.getContext('2d');
-const contextButton = canvas.getContext(`2d`);
-
+const contextButton = canvas.getContext('2d');
 const clearButton = document.querySelector("#clearButton");
+const messageForm = document.getElementById(`chat-form`);
+const chatMessages = document.querySelector(`.chat-messages`);
+const msg = document.getElementById(`msg`);
+let rect = canvas.getBoundingClientRect();
+const userList = document.getElementById('users');
+
+const {username, code} = Qs.parse(location.search, {
+    ignoreQueryPrefix: true
+});
+
+socket.emit(`join-room`, {username, code});
+
+socket.on('roomUsers', ({users}) => {
+    function outputUsers(users) {
+        userList.innerHTML = '';
+        users.forEach((user) => {
+            const li = document.createElement('li');
+            li.innerText = user.username;
+            userList.appendChild(li);
+        });
+    }
+
+    outputUsers(users);
+});
+
+
+//chat-form listener to set innerText to '' every time
+messageForm.addEventListener(`submit`, (event) => {
+    event.preventDefault();
+    let message = event.target.elements.msg.value;
+    message = message.trim();
+    console.log(message);
+    socket.emit('chat-message', message);
+    event.target.elements.msg.value = ``;
+    event.target.elements.msg.focus();
+});
+
 
 let paint = false;
 
@@ -22,7 +58,6 @@ const metaData = {
         y: 0
     }
 };
-
 
 const setMetaDataFrom = (coordinates) => {
     metaData.From.x = coordinates.x;
@@ -45,7 +80,7 @@ function stopPaint() {
 function doPaint(event) {
     if (paint) {
         context.beginPath();
-        context.lineWidth = 5;
+        context.lineWidth = 3;
         context.lineCap = 'round';
         context.color = `black`;
         setMetaDataFrom(coordinates);
@@ -59,8 +94,8 @@ function doPaint(event) {
 }
 
 function setCoordinates(event) {
-    coordinates.x = event.offsetX;
-    coordinates.y = event.offsetY
+    coordinates.x = (event.clientX - rect.left) / (rect.right - rect.left) * canvas.width;
+    coordinates.y = (event.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height;
 }
 
 socket.on(`clear-event`, () => {
@@ -79,6 +114,19 @@ socket.on(`draw coordinates`, metaData => {
     instaPaint(initialCoordinates, finalCoordinates);
 });
 
+socket.on(`message`, (message) => {
+    displayInChat(message);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+//add message div in the chat-box
+function displayInChat(message) {
+    const div = document.createElement(`div`);
+    div.classList.add(`message`);
+    div.innerHTML = `<p class="meta">${message.username}</p><p class="text">${message.text}</p>`;
+    document.querySelector('.chat-messages').appendChild(div);
+}
+
 function startPaint(event) {
     paint = true;
     setCoordinates(event);
@@ -91,7 +139,7 @@ function setCoords(coords) {
 const instaPaint = (initialCoordinates, finalCoordinates) => {
 
     context.beginPath();
-    context.lineWidth = 5;
+    context.lineWidth = 3;
     context.lineCap = 'round';
     context.color = `black`;
     setCoords(initialCoordinates);
