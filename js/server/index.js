@@ -45,24 +45,24 @@ io.on('connection', socket => {
     //On Disconnect
     socket.on('disconnect', () => {
         const user = userLeave(socket.id);
-
         //check if any user exists
         if (user) {
             io.to(user.code).emit('message', formattedMessage(aiName, `${user.username} has left the game`));
         }
-
         //Send info for sidebar
         io.to(user.code).emit('roomUsers', {users: getRoomUsers(user.code)});
     });
 
     //clear canvas event
     socket.on(`clear-event`, () => {
-        socket.broadcast.emit(`clear-event`);
+        const user = getCurrentUser(socket.id);
+        socket.broadcast.to(user.code).emit(`clear-event`);
     });
 
     //draw canvas event
     socket.on('coordinates-sent', (metaData) => {
-        socket.broadcast.emit(`draw coordinates`, metaData);
+        const user = getCurrentUser(socket.id);
+        socket.broadcast.to(user.code).emit(`draw coordinates`, metaData);
     });
 });
 
