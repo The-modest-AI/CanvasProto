@@ -28,7 +28,6 @@ socket.on('roomUsers', ({users}) => {
     outputUsers(users);
 });
 
-
 //chat-form listener to set innerText to '' every time
 messageForm.addEventListener(`submit`, (event) => {
     event.preventDefault();
@@ -39,7 +38,6 @@ messageForm.addEventListener(`submit`, (event) => {
     event.target.elements.msg.value = ``;
     event.target.elements.msg.focus();
 });
-
 
 let paint = false;
 
@@ -137,7 +135,6 @@ function setCoords(coords) {
 }
 
 const instaPaint = (initialCoordinates, finalCoordinates) => {
-
     context.beginPath();
     context.lineWidth = 3;
     context.lineCap = 'round';
