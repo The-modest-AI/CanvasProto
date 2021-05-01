@@ -1,11 +1,12 @@
 {
   "name": "javascript-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "App to play with others, using socket.io",
   "main": "index.js",
   "dependencies": {
     "@types/socket.io": "^2.1.13",
     "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
     "socket.io": "^4.0.0"
   },
   "devDependencies": {
@@ -15,6 +16,6 @@
     "start": "node js/server/index",
     "dev": "nodemon js/server/index"
   },
-  "author": "",
+  "author": "The-modest-AI",
   "license": "ISC"
 }

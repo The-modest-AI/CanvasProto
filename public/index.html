@@ -1,59 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>CanvasProto</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-          integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="css/style.css"/>
-</head>
-<body class="body">
-
-
-<div class="wrap">
-    <div class="chat-sidebar">
-        <h3><i class="fas fa-users"></i>Players</h3>
-        <ul id="users">
-        </ul>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+      charset="utf8"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="body">
+    <div class="overlay-start-options">
+      <div class="container-start-game-options">
+        <div class="form-container">
+          <form id="game-start-form">
+            <label for="time-quantity"
+              ><i class="fas fa-clock"></i> Time(in seconds)</label
+            >
+            <input
+              type="number"
+              pattern="\d*"
+              id="time-quantity"
+              name="time-quantity"
+              value="3"
+              min="1"
+              max="180"
+            />
+            <label for="quantity">Round Numbers</label>
+            <input
+              type="number"
+              id="rounds-quantity"
+              value="1"
+              name="quantity"
+              min="1"
+              max="10"
+            />
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="toolbox">
+
+    <div class="overlay">
+      <div class="points">
+        <header class="header">Results</header>
+        <div class="list-container">
+          <ul class="list"></ul>
+        </div>
+        <div class="div-button">
+          <button class="buttonClose">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay-word">
+      <div class="container-div-word">
+        <div class="header-container">
+          <header class="header-description">The word is</header>
+        </div>
+        <div class="actual-word">
+          <button id="show-word-button"></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="header">
+      <div class="left-edge">
+        <div class="timer"></div>
+        <div class="round-number"></div>
+      </div>
+      <div class="text-guess"></div>
+      <div class="start-div"></div>
+      <div id="dark-mode">
+        <button id="dark-btn"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="chat-sidebar">
+        <h3><i class="fas fa-users"></i> Players</h3>
+        <ul id="users"></ul>
+      </div>
+      <div class="toolbox">
         <button id="brushButton"><i class="fa fa-brush"></i></button>
         <button id="colorButton"><i class="fas fa-palette"></i></button>
         <button id="clearButton"><i class="fas fa-trash-alt"></i></button>
-    </div>
-    <div class="drawCanvas">
+      </div>
+      <div class="drawCanvas">
         <canvas id="myCanvas"></canvas>
-    </div>
-    <div class="chat-container">
+      </div>
+      <div class="chat-container">
         <div class="chat-messages"></div>
         <div class="chat-form-container">
-            <form id="chat-form">
-                <label for="msg"></label><input
-                    id="msg"
-                    type="text"
-                    placeholder="Enter Message"
-                    required
-                    autocomplete="off"
+          <form id="chat-form">
+            <label for="msg"></label
+            ><input
+              id="msg"
+              type="text"
+              placeholder="Enter Message..."
+              required
+              autocomplete="off"
+              maxlength="150"
             />
-                <button class="btn"><i class="fas fa-paper-plane"></i>Send</button>
-            </form>
+            <button class="btn"><i class="fas fa-paper-plane"></i>Send</button>
+          </form>
         </div>
+      </div>
     </div>
-</div>
 
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js"
-        integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ=="
-        crossorigin="anonymous"></script>
-<!--suppress HtmlUnknownTarget -->
-<script src="/socket.io/socket.io.js">
-
-</script>
-<script>
-    // noinspection JSUnresolvedFunction
-    const s = io();
-</script>
-<script src="script.js"></script>
-</body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js"
+      integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ=="
+      crossorigin="anonymous"
+    ></script>
+    <!--suppress HtmlUnknownTarget -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // noinspection JSUnresolvedFunction
+      const s = io();
+    </script>
+    <script src="script.js"></script>
+  </body>
 </html>

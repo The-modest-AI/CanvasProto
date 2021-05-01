@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+:root {
+  --primary-color: #fff;
+  --dark-color-a: #667aff;
+  --dark-color-b: #7386ff;
+  --bg-color: #fff;
+  --label-color: hsl(0, 0%, 100%);
+  --join-button-text-color: #667aff;
+  --join-button-bg-color: #ebedff;
+  --join-button-hover-bg: #4e62fc;
+  --join-button-text-hover: #fff;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  margin: 0;
+}
+
+.join-container {
+  max-width: 500px;
+  margin: 80px auto;
+  color: var(--primary-color);
+}
+
+.join-header {
+  text-align: center;
+  padding: 20px;
+  background: var(--dark-color-a);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.join-main {
+  padding: 30px 40px;
+  background: var(--dark-color-b);
+}
+
+.join-main p {
+  margin-bottom: 20px;
+}
+
+.join-main .form-control {
+  margin-bottom: 20px;
+}
+
+.join-main label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.join-main input[type="text"] {
+  font-size: 16px;
+  padding: 5px;
+  height: 40px;
+  width: 100%;
+}
+
+.join-main select {
+  font-size: 16px;
+  padding: 5px;
+  height: 40px;
+  width: 100%;
+}
+
+.join-main .btn {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 5px 15px;
+  margin: 0;
+  background-color: var(--join-button-bg-color);
+  color: var(--join-button-text-color);
+  border: 0;
+  font-size: 17px;
+  transition: color 250ms ease, transform 400ms ease 0s;
+  -webkit-transition: color 250ms ease, transform 400ms ease 0s;
+  -moz-transition: color 250ms ease, transform 400ms ease 0s;
+  -ms-transition: color 250ms ease, transform 400ms ease 0s;
+  -o-transition: color 250ms ease, transform 400ms ease 0s;
+}
+
+.btn:hover {
+  background-color: var(--join-button-hover-bg);
+  color: var(--join-button-text-hover);
+  transform: scale(1.05);
+  -webkit-transform: scale(1.051);
+  -moz-transform: scale(1.051);
+  -ms-transform: scale(1.051);
+  -o-transform: scale(1.051);
+}
+
+label {
+  color: var(--label-color);
+}
+
+.body {
+  color: #222;
+  background: #fff;
+  font: 100% system-ui;
+}
+a {
+  color: #0033cc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: rgba(129, 148, 255, 0.8);
+    --bg-color: #212121;
+    --dark-color-a: rgb(255, 255, 255, 0.14);
+    --dark-color-b: rgb(255, 255, 255, 0.1);
+    --join-button-text-color: rgb(117, 136, 255);
+    --join-button-bg-color: hsl(0, 0%, 26%);
+    --join-button-hover-bg: rgb(117, 136, 255);
+    --join-button-text-hover: hsl(0, 0%, 87%);
+    --label-color: hsl(0, 0%, 87%);
+  }
+}
