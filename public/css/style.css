@@ -280,13 +280,13 @@ textarea {
   flex-wrap: wrap;
   gap: 10px;
   margin: 4px 4px 10px;
-  height: 90vh;
+  height: 84vh;
 }
 
 #header {
   background-color: var(--light-color);
   color: var(--primary-color);
-  padding: 15px 25px;
+  padding: 1px 25px;
   margin: 4px 4px 10px;
   border-radius: 5px;
   justify-content: space-between;
