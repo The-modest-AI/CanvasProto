@@ -11,11 +11,11 @@ const defineRoom = (time, code, rounds) => {
     r = 3;
   }
 
-  if (!isNaN(t) && !isNaN(r)) {
+  if (!isNaN(t) || !isNaN(r)) {
     if (t > 180 || t < 1) t = 30;
     if (r > 10 || r < 1) r = 3;
   }
-  
+
   const room = {
     time: t,
     word: undefined,
