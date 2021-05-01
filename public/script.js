@@ -40,7 +40,7 @@ socket.on("display-word", (text) => {
   wordBtn.innerText = text;
   setTimeout(() => {
     document.querySelector(".overlay-word").style.visibility = "hidden";
-  }, 1000);
+  }, 3000);
 });
 
 socket.on("time-event", (e) => {
